@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3fc600d9-0fac-4ab3-b07d-5dbadd8fbd03" name="zhuoxin" url="http://127.0.0.1/">
+        <fileTransfer host="s500.xrea.com" port="21" rootFolder="/public_html/zhuoxinsocial.top">
+          <advancedOptions>
+            <advancedOptions controlEncoding="utf-8" dataProtectionLevel="Private" passiveMode="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
