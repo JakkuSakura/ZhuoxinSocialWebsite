@@ -6,7 +6,7 @@
  * Time: 19:36
  */
 require_once "header.php";
-require_once ROOT . "/MarkdownParser.php";
+require_once ROOT . "MarkdownParser.php";
 if (!isset($_GET['uid']))
     die("你不能直接访问这个页面");
 

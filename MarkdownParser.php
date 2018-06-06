@@ -45,7 +45,7 @@ class Parser
     /**
      * @var bool
      */
-    public $_html = false;
+    public $_html = true;
 
     /**
      * @var bool

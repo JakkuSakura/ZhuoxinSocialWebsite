@@ -266,7 +266,7 @@ require_once "header.php";
             </div>
         </div>
         <div class="ui text container">
-            <?php if (User::isLoggedIn()) { ?>
+            <?php if (!User::isLoggedIn()) { ?>
                 <h1 class="ui inverted header">
                     一个允许你展示自我<br>寻找朋友的平台
                 </h1>
@@ -276,7 +276,7 @@ require_once "header.php";
                 </div>
                 <br><br><br><br><br><br><br><br><br><br><br><br>
             <?php } else { ?>
-                    <h1 class="ui header">欢迎登录，<?php echo User::getLoginUser()->nickname?></h1>
+                    <h1 class="ui header" style="color: #ffffff;">欢迎登录，<?php echo User::getLoginUser()->nickname?></h1>
             <?php } ?>
         </div>
 
