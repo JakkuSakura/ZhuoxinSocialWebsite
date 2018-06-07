@@ -11,8 +11,8 @@ if (!isset($_POST['strEmail']))
 
     sendmsg("failed", "邮箱不能为空");
 $email = addslashes($_POST['strEmail']);
-if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $email))
-    sendmsg("failed", "无效的 email 格式！");
+//if (!preg_match("/([\w\d\-]+\@[\w\-]+\.[\w\-]+)/", $email))
+//    sendmsg("failed", "无效的 email 格式！");
 if (User::getUser('email', $email)->valid())
     sendmsg("failed", "您的邮箱已经注册过，请勿重复注册。如需帮助，请咨询管理员 956269867@qq.com");
 if (!isset($_POST['nickname']))
@@ -38,8 +38,8 @@ if (strlen($password) < 6 || strlen($password) > 16) {
 }
 $password = md5("FUCK" . $password);
 
-if (!isset($_SESSION['captcha_code']) or !isset($_POST['strCaptcha']) or $_SESSION['captcha_code'] != $_POST['strCaptcha']) {
-    sendmsg("failed", "你必须正确地输入验证码".$_SESSION['captcha_code'].$_POST);
+if (!isset($_SESSION['captcha_code']) or !isset($_POST['strCaptcha']) or $_SESSION['captcha_code'] != strtolower($_POST['strCaptcha'])) {
+    sendmsg("failed", "你必须正确地输入验证码");
 }
 if (!isset($_POST['strEmail']) or empty($_POST['blnTerms'])) {
     sendmsg("failed", "你没有阅读并同意注册条款");

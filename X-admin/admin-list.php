@@ -8,12 +8,14 @@ if (isset($_POST['oper'])) {
     switch ($_POST['oper']) {
         case 'cancel':
             check("cancel_admin");
+            if (getPermission(User::getLoginUser()->id)['user_level'] < getPermission($ur)['user_level'])
+                sendmsg("failed", "没有权限");
             Database::update('user', "is_admin", 0, "id=" . $ur->id);
             Database::SQLquery("DELETE FROM `permission` WHERE `id`=" . $ur->id);
             sendmsg("successful", "取消管理员{$ur->id}:{$ur->nickname}成功");
             break;
         case 'set_admin':
-            if (getPermission($user->id)['user_level'] < 800)
+            if (!User::isLoggedIn() || getPermission(User::getLoginUser()->id)['user_level'] < 800)
                 sendmsg("failed", "没有权限");
             Database::update('user', "is_admin", 1, "id=" . $ur->id);
             Database::SQLquery("INSERT INTO `permission`(`id`, `user_level`, `see_user`, `ban_user`, `see_admin`, `cancel_admin`, `send_message`, `delete_message`, `send_email`, `delete_user`, `see_message`, `see_commits`,
@@ -23,7 +25,6 @@ if (isset($_POST['oper'])) {
         default:
             sendmsg("failed", "unknown");
     }
-    sendmsg("failed", "WTF");
 }
 $index = [
     ['UID', 'id'],

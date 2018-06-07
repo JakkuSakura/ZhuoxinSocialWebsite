@@ -95,11 +95,12 @@ function sendEmail($toeamil, $subject, $body, $debug = false)
 }
 function sendVeriEmail($to, $nickname, $debug = false)
 {
+
     $subject = "【卓信社交】您的邮箱需要验证";
     $code = md5("This is salt" . $to) . md5(base64_encode($to));
 //添加邮件正文
     $body = "{$nickname}，你好。<br />　　你注册了卓信网站的账号，需要进行邮箱验证，请点击以下链接（或复制到地址栏打开）<br /> <a href='http://{$_SERVER['SERVER_NAME']}/veriEmail.php?email={$to}&code={$code}'>http://{$_SERVER['SERVER_NAME']}/veriEmail.php?email={$to}&code={$code}</a> ";
 
-    sendEmail($to,$subject,$body);
+    sendEmailAction($to,$subject,$body);
 }
 

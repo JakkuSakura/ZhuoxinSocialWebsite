@@ -693,7 +693,6 @@ input[type="submit"].btn-hollow {
   display: flex;
   justify-content: flex-start;
   text-align: left;
-  /* fuck UC */
 }
 .cell-select {
   flex: 1;

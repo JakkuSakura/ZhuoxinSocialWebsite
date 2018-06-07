@@ -22,7 +22,6 @@ if (isset($_POST['oper'])) {
         default:
             sendmsg("failed", "unknown");
     }
-    sendmsg("failed", "WTF");
 }
 $index = [
     ['UID', 'id'],

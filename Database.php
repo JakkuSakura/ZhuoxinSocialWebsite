@@ -11,6 +11,7 @@ class Database
     {
         $qry = "UPDATE `{$where}` SET `{$wt}` = '{$st}' WHERE {$cond}";
         $err = Database::SQLquery($qry);
+        return $err;
 //        if (is_string($err))
 //        {
 //            echo "$qry<br>\n$err<br>\n";

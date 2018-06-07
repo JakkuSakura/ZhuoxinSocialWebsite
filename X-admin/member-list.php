@@ -14,7 +14,7 @@ if (isset($_POST['oper'])) {
         case 'delete':
             check("delete_user");
             $p = getPermission($ur->id);
-            $myp = getPermission($user->id);
+            $myp = getPermission(User::getLoginUser()->id);
             if ($p["user_level"] < $p["user_level"])
             {
                 sendmsg("failed", "你没有权限");
@@ -25,7 +25,6 @@ if (isset($_POST['oper'])) {
         default:
             sendmsg("failed", "unknown");
     }
-    sendmsg("failed", "WTF");
 }
 $index = [
     ['UID', 'id'],

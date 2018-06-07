@@ -14,8 +14,8 @@ if (!isset($_POST['strProfileText']))
 $text = $_POST['strProfileText'];
 
 if (User::isLoggedIn()) {
-    Database::update("user", "self-introduction", urlencode($text), "`id` = " . User::getLoginUser()->id);
-    echo "成功更新信息";
+    $qur = Database::update("user", "self_introduction", urlencode($text), "`id` = " . User::getLoginUser()->id);
+    echo "成功更新信息" . $qur;
 } else {
     echo '对不起，您还没有登录，请登录';
 }

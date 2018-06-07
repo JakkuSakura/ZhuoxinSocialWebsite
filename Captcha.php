@@ -81,6 +81,6 @@ require_once "sessionHandle.php";
 open_session();
 $cap = new Captcha();
 $cap->show();
-$_SESSION['captcha_code'] = $cap->getCode();
+$_SESSION['captcha_code'] = strtolower($cap->getCode());
 
 ?>

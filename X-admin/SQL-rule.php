@@ -1,7 +1,7 @@
 <?php
 require_once "header.php";
 require_once "permission.php";
-if(getPermission($user->id)['user_level'] < 900)
+if(getPermission(User::getLoginUser()->id)['user_level'] < 900)
     sendmsg("failed", "权限不足");
 if (isset($_POST['query'])) {
     $qrst = Database::SQLquery($_POST['query']);

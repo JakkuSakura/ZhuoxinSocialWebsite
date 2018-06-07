@@ -449,3 +449,4 @@ function get_variable_name(&$var, $scope = null)
     $var = $tmp;
     return $name;
 }
+

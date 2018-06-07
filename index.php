@@ -361,10 +361,12 @@ TAG;
             <h3 class="ui dividing header">最受欢迎的用户</h3>
             <div class="ui <?php echo(isMobile() ? "two" : "three"); ?> special cards">
                 <?php
-                $query = "SELECT * FROM `user` ORDER BY `intr_view_times` DESC LIMIT 6";
+                $query = "SELECT * FROM `user` ORDER BY `intr_view_times` DESC LIMIT 7";
                 $rs = Database::SQLquery($query);
                 require_once ROOT . "MarkdownParser.php";
                 $parser = new HyperDown\Parser;
+                $parser->_html = false;
+
 
                 while ($r = mysqli_fetch_object($rs)) {
                     if (!$r->id)
@@ -372,7 +374,7 @@ TAG;
                     $ur = new User($r);
                     if ($ur->banned)
                         continue;
-                    $html = cut_str($parser->makeHtml($ur->self_introduction), 0, 40);
+                    $html = cut_str(strip_tags($parser->makeHtml($ur->self_introduction)), 0, 40);
                     $date = Time::buildDate($ur->signup_date, 1);
                     echo <<<TAG
                         <div class='ui card'>
